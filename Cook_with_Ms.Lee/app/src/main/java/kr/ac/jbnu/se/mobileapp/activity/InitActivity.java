@@ -1,59 +1,40 @@
 package kr.ac.jbnu.se.mobileapp.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import kr.ac.jbnu.se.mobileapp.R;
+import kr.ac.jbnu.se.mobileapp.fragment.Init.LoginFragment;
 import kr.ac.jbnu.se.mobileapp.fragment.Init.ReadyFragment;
 
 public class InitActivity extends AppCompatActivity {
 
-    public static final String INTENT_SETUP_TYPE = "setupType";
-    public static final int SETUP_TYPE_NONE = 0;
-    public static final int SETUP_TYPE_USER = 1;
-    public static final int SETUP_TYPE_SETUP = 2;
+    ReadyFragment readyFragment;
+    LoginFragment loginFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_init);
 
-        int setupType = getIntent().getIntExtra(INTENT_SETUP_TYPE, SETUP_TYPE_NONE);
-        Bundle b = new Bundle();
-        b.putInt(INTENT_SETUP_TYPE, setupType);
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
 
-        fragmentUtil = new FragmentUtil(getSupportFragmentManager(), R.id.content);
-        switch(setupType){
-            case SETUP_TYPE_USER:
-                fragmentUtil.add(new LoginFragment(), b);
-                break;
-            case SETUP_TYPE_SETUP:
-                fragmentUtil.add(new UserInfoFragment(), b);
-                break;
-            default:
-                if(!SharedPreferencesUtil.getInstance().hasRecentAddress() || !SharedPreferencesUtil.getInstance().hasUserId()){
-                    b.putInt(INTENT_SETUP_TYPE, SETUP_TYPE_NONE);
-                    fragmentUtil.add(new ReadyFragment(), b);
-                }else{
-                    Status.USER_ID = SharedPreferencesUtil.getInstance().getUserId();
-                    Status.USER_FBID = SharedPreferencesUtil.getInstance().getFbId();
-                    Status.USER_NAME = SharedPreferencesUtil.getInstance().getUserName();
+        readyFragment = new ReadyFragment();
+        ft.add(R.id.container, readyFragment).commit();
+    }
 
-                    startActivity(new Intent(context, MainActivity.class));
-                    finish();
-                }
-                break;
+    //beginTransaction()은 트랜스잭션 객체가 생성 및 시작 - commit()은 작업 실행
+    public void onFragmentChanged(int i) {
+        if(i == 1){
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+
+            ft.setCustomAnimations(R.anim.fragment_in, R.anim.fragment_out, R.anim.fragment_in_backstack, R.anim.fragment_out_backstack);
+            loginFragment = new LoginFragment();
+            ft.replace(R.id.container, loginFragment).commit();
         }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        for(Fragment f : getSupportFragmentManager().getFragments())
-            f.onActivityResult(requestCode, resultCode, data);
-
-        super.onActivityResult(requestCode, resultCode, data);
-    }
     }
 }
