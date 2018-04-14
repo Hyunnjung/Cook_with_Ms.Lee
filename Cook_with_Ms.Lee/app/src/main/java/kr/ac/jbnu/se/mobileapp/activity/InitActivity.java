@@ -1,15 +1,20 @@
 package kr.ac.jbnu.se.mobileapp.activity;
-
+/**
+ * Copyright 2018 All rights reserved by WaySeekers.
+ *
+ * @author bongO moon
+ * @since 2018. 04. 09.
+ */
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 
 import kr.ac.jbnu.se.mobileapp.R;
 import kr.ac.jbnu.se.mobileapp.fragment.Init.LoginFragment;
 import kr.ac.jbnu.se.mobileapp.fragment.Init.ReadyFragment;
 
-public class InitActivity extends AppCompatActivity {
+public class InitActivity extends FragmentActivity {
 
     ReadyFragment readyFragment;
     LoginFragment loginFragment;
@@ -31,10 +36,20 @@ public class InitActivity extends AppCompatActivity {
         if(i == 1){
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
-
             ft.setCustomAnimations(R.anim.fragment_in, R.anim.fragment_out, R.anim.fragment_in_backstack, R.anim.fragment_out_backstack);
             loginFragment = new LoginFragment();
             ft.replace(R.id.container, loginFragment).commit();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 }

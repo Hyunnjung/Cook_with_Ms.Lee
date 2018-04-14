@@ -13,6 +13,7 @@ import kr.ac.jbnu.se.mobileapp.activity.InitActivity;
 
 public class ReadyFragment extends Fragment {
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -24,16 +25,11 @@ public class ReadyFragment extends Fragment {
         ibtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InitActivity activity = (InitActivity) getActivity();   //프래그먼트를 관리하는 액티비티 리턴
-                activity.onFragmentChanged(1);  //메인 액티비티에 새로 추가할 메소드로 프래그먼트 매니저를 이용해 프래그먼트를 전환하는 메소드
-                //액티비티를 본떠 만든 프래그먼트, 액티비티 관리-> 시스템 프래그먼트 관리-> 액티비티
-                //액티비티에서 프래그먼트를 전환하도록 해야함
+                InitActivity activity = (InitActivity) getActivity();
+                activity.onFragmentChanged(1);
             }
         });
 
         return rootView;
     }
-
-
-
 }

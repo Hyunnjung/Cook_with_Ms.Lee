@@ -1,5 +1,10 @@
 package kr.ac.jbnu.se.mobileapp.activity;
-
+/**
+ * Copyright 2018 All rights reserved by WaySeekers.
+ *
+ * @author bongO moon
+ * @since 2018. 04. 14.
+ */
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 

@@ -51,13 +51,12 @@
             android:gravity="center"
             android:orientation="vertical"
             android:padding="16dp">
-
-            <Button
-                android:id="@+id/btn_setup_login_kt"
+            <!--android:background="@drawable/kakao_account_login_btn_medium_narrow"-->
+            <com.kakao.usermgmt.LoginButton
+                android:id="@+id/btn_login_kakao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/kakao_account_login_btn_medium_narrow"
                 android:paddingLeft="32dp"
                 android:paddingRight="32dp" />
         </LinearLayout>
