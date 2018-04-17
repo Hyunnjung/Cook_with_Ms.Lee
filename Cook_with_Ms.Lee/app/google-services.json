@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "418374091145",
+    "firebase_url": "https://cook-with-ms-lee.firebaseio.com",
+    "project_id": "cook-with-ms-lee",
+    "storage_bucket": "cook-with-ms-lee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418374091145:android:76f16a2c4e3ece73",
+        "android_client_info": {
+          "package_name": "kr.ac.jbnu.se.mobileapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418374091145-ev835e42846idee1g6eqesjav8g8nr10.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIPphUpJdpoVd3Y66-zxDw3ewkbfXiBQI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
